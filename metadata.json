@@ -1,0 +1,6 @@
+{
+  "name": "Juncn Studio Hero",
+  "description": "A dark mode enabled interactive hero section for a creative studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
