@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Sample Data for 7 Projects
@@ -63,14 +63,33 @@ const PROJECTS = [
 
 export default function OurWorkSection() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [scrollRange, setScrollRange] = useState(0);
+
+  useEffect(() => {
+    const updateScrollRange = () => {
+      if (trackRef.current) {
+        // Calculate the maximum distance we can scroll horizontally
+        // It's the total width of the track minus the container width
+        // We add some padding (40px) to ensure the last card isn't completely flush with the edge
+        const range = trackRef.current.scrollWidth - window.innerWidth + 80;
+        setScrollRange(Math.max(0, range));
+      }
+    };
+    
+    updateScrollRange();
+    window.addEventListener('resize', updateScrollRange);
+    return () => window.removeEventListener('resize', updateScrollRange);
+  }, []);
 
   // Tracks vertical scroll progress inside this section
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"]
   });
 
-  // Maps vertical scroll (0% to 100%) to horizontal translation (-0% to -82%)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-82%"]);
+  // Maps vertical scroll (0% to 100%) to horizontal translation in pixels
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
   return (
     <section ref={targetRef} className="relative h-[400vh] text-black dark:text-white">
@@ -82,6 +101,7 @@ export default function OurWorkSection() {
         
         {/* --- Top Header Area (Fixed while scrolling) --- */}
         <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6 z-20 pb-6 border-b border-zinc-200 dark:border-zinc-800/80">
+
           <div>
             {/* Category Tag matching Hero style */}
             <div className="inline-flex items-center gap-2 font-mono text-xs text-[#0A1128] dark:text-[#D4FF00] font-bold uppercase tracking-widest mb-3">
@@ -101,7 +121,7 @@ export default function OurWorkSection() {
 
         {/* --- Horizontal Scroll Track --- */}
         <div className="relative flex-1 flex items-center my-auto">
-          <motion.div style={{ x }} className="flex gap-8 pl-4 pr-24">
+          <motion.div ref={trackRef} style={{ x }} className="flex w-max gap-8 pl-4 pr-24">
             {PROJECTS.map((project) => (
               <div
                 key={project.id}
