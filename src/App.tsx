@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import OurWorkSection from './components/OurWorkSection';
 import ServicesSection from './components/ServicesSection';
+import ProcessSection from './components/ProcessSection';
 
 const DotBackground = ({ isDark }: { isDark: boolean }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -223,6 +224,9 @@ const DotBackground = ({ isDark }: { isDark: boolean }) => {
       
       {/* Services Section */}
       <ServicesSection />
+      
+      {/* Process Section */}
+      <ProcessSection />
     </div>
   );
 }
