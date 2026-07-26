@@ -42,12 +42,42 @@ const processSteps = [
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: -1000, y: -1000 });
+  };
 
   return (
-    <section className="relative w-full bg-white dark:bg-[#0a0a0a] text-black dark:text-white py-24 px-6 md:px-12 font-sans overflow-hidden border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+    <section 
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative w-full bg-white dark:bg-[#0a0a0a] text-black dark:text-white py-24 px-6 md:px-12 font-sans overflow-hidden border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+    >
       
-      {/* Background Accent Lines */}
+      {/* Background Accent Lines (Base Grid) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 dark:opacity-25 pointer-events-none" />
+
+      {/* Glowing Grid (Hover) */}
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#0A1128_1px,transparent_1px),linear-gradient(to_bottom,#0A1128_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none transition-opacity duration-300"
+        style={{
+          WebkitMaskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          maskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          opacity: mousePos.x !== -1000 ? 0.8 : 0,
+        }}
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
