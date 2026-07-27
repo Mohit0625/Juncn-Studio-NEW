@@ -4,114 +4,44 @@ import OurWorkSection from './components/OurWorkSection';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 
-const DotBackground = ({ isDark }: { isDark: boolean }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+const GridBackground = ({ isDark }: { isDark: boolean }) => {
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let targetMouseX = -1000;
-    let targetMouseY = -1000;
-    let currentX = -1000;
-    let currentY = -1000;
-
-    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
-      if ('touches' in e) {
-        targetMouseX = e.touches[0].clientX;
-        targetMouseY = e.touches[0].clientY;
-      } else {
-        targetMouseX = (e as MouseEvent).clientX;
-        targetMouseY = (e as MouseEvent).clientY;
-      }
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    
+    const handleMouseLeave = () => {
+      setMousePos({ x: -1000, y: -1000 });
     };
 
-    window.addEventListener('mousemove', handleMouseMove as any);
-    window.addEventListener('touchmove', handleMouseMove as any, { passive: true });
-    window.addEventListener('touchstart', handleMouseMove as any, { passive: true });
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    const draw = () => {
-      currentX += (targetMouseX - currentX) * 0.15;
-      currentY += (targetMouseY - currentY) * 0.15;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const targetDots = 10000;
-      const viewportArea = window.innerWidth * window.innerHeight;
-      const dotArea = viewportArea / targetDots;
-      const spacing = Math.sqrt(dotArea);
-      
-      const cols = Math.ceil(canvas.width / spacing) + 2;
-      const rows = Math.ceil(canvas.height / spacing) + 2;
-      
-      const radius = 57; // Approx 1.5cm radius (57 pixels)
-      ctx.lineWidth = 1.5;
-
-      const scrollX = window.scrollX;
-      const scrollY = window.scrollY;
-      
-      const offsetX = -(scrollX % spacing);
-      const offsetY = -(scrollY % spacing);
-      
-      for (let i = -1; i < cols; i++) {
-        for (let j = -1; j < rows; j++) {
-          const x = i * spacing + offsetX;
-          const y = j * spacing + offsetY;
-          
-          const dx = x - currentX;
-          const dy = y - currentY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          ctx.beginPath();
-          ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-          
-          if (dist < radius) {
-            ctx.globalAlpha = Math.pow(1 - (dist / radius), 0.5);
-            ctx.fillStyle = isDark ? '#D4FF00' : '#000000';
-            ctx.fill();
-            
-            ctx.globalAlpha = 1.0;
-            ctx.strokeStyle = isDark ? '#0A1128' : '#ffffff';
-            ctx.stroke();
-          } else {
-            ctx.strokeStyle = isDark ? '#0A1128' : '#ffffff';
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    draw();
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove as any);
-      window.removeEventListener('touchmove', handleMouseMove as any);
-      window.removeEventListener('touchstart', handleMouseMove as any);
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isDark]);
+  }, []);
 
   return (
-      <canvas 
-        ref={canvasRef} 
-        className="fixed inset-0 w-full h-full pointer-events-none z-0 transition-opacity duration-300"
+    <div className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-300">
+      {/* Background Accent Lines (Base Grid) */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50 dark:opacity-25" />
+
+      {/* Glowing Grid (Hover) */}
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:4rem_4rem] transition-opacity duration-300"
+        style={{
+          WebkitMaskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          maskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          opacity: mousePos.x !== -1000 ? 0.8 : 0,
+        }}
       />
-    );
-  };
+    </div>
+  );
+};
   
   export default function App() {
     const [isDark, setIsDark] = useState(true);
@@ -120,8 +50,8 @@ const DotBackground = ({ isDark }: { isDark: boolean }) => {
   
     useEffect(() => {
       setIsTransitioning(true);
-      document.documentElement.style.backgroundColor = isDark ? '#0A1128' : '#ffffff';
-      document.body.style.backgroundColor = isDark ? '#0A1128' : '#ffffff';
+      document.documentElement.style.backgroundColor = isDark ? '#0a0a0a' : '#ffffff';
+      document.body.style.backgroundColor = isDark ? '#0a0a0a' : '#ffffff';
       
       const timer = setTimeout(() => {
         setIsTransitioning(false);
@@ -133,7 +63,7 @@ const DotBackground = ({ isDark }: { isDark: boolean }) => {
     return (
       <div className={isDark ? 'dark' : ''}>
         <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
-          <DotBackground isDark={isDark} />
+          <GridBackground isDark={isDark} />
         </div>
         
         <div className="min-h-screen bg-transparent text-black dark:text-white selection:bg-[#D4FF00] selection:text-black font-sans relative z-10 flex flex-col justify-between p-6 md:p-10 transition-colors duration-300">

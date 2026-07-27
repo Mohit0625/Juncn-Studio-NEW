@@ -42,56 +42,25 @@ const processSteps = [
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
-  const sectionRef = React.useRef<HTMLElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: -1000, y: -1000 });
-  };
 
   return (
     <section 
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full bg-white dark:bg-[#0a0a0a] text-black dark:text-white py-24 px-6 md:px-12 font-sans overflow-hidden border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+      className="relative w-full bg-transparent text-black dark:text-white py-24 px-6 md:px-12 font-sans overflow-hidden border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
     >
       
-      {/* Background Accent Lines (Base Grid) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 dark:opacity-25 pointer-events-none" />
-
-      {/* Glowing Grid (Hover) */}
-      <div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#0A1128_1px,transparent_1px),linear-gradient(to_bottom,#0A1128_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none transition-opacity duration-300"
-        style={{
-          WebkitMaskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-          maskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-          opacity: mousePos.x !== -1000 ? 0.8 : 0,
-        }}
-      />
-
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
         <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#0A1128] dark:bg-[#D4FF00] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00] animate-pulse" />
               <span className="text-xs font-mono tracking-widest text-neutral-600 dark:text-neutral-400 uppercase">
                 03 // OUR METHODOLOGY
               </span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] leading-[0.95]">
-              THE EXECUTABLE <span className="text-[#0A1128] dark:text-[#D4FF00] font-['Instrument_Serif'] italic font-normal">FLOW</span>
+              THE EXECUTABLE <span className="text-[#000000] dark:text-[#D4FF00] font-['Instrument_Serif'] italic font-normal">FLOW</span>
             </h2>
           </div>
           <p className="text-neutral-600 dark:text-neutral-400 max-w-sm text-sm font-mono leading-relaxed">
@@ -107,7 +76,7 @@ export default function ProcessSection() {
 
           {/* Active Filled Progress Line */}
           <motion.div 
-            className="absolute top-1/2 left-0 h-[2px] bg-[#0A1128] dark:bg-[#D4FF00] -translate-y-1/2 z-0 shadow-[0_0_12px_rgba(10,17,40,0.5)] dark:shadow-[0_0_12px_#D4FF00]"
+            className="absolute top-1/2 left-0 h-[2px] bg-[#000000] dark:bg-[#D4FF00] -translate-y-1/2 z-0 shadow-[0_0_12px_rgba(0,0,0,0.5)] dark:shadow-[0_0_12px_#D4FF00]"
             initial={{ width: "0%" }}
             animate={{ width: `${(activeStep / (processSteps.length - 1)) * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -127,7 +96,7 @@ export default function ProcessSection() {
                 >
                   {/* Step Title Label above node */}
                   <span className={`absolute -top-10 text-xs font-mono font-bold uppercase transition-all duration-300 hidden md:block whitespace-nowrap ${
-                    isActive ? "text-[#0A1128] dark:text-[#D4FF00] -translate-y-1" : "text-neutral-500 group-hover:text-neutral-700 dark:group-hover:text-neutral-300"
+                    isActive ? "text-[#000000] dark:text-[#D4FF00] -translate-y-1" : "text-neutral-500 group-hover:text-neutral-700 dark:group-hover:text-neutral-300"
                   }`}>
                     {step.title}
                   </span>
@@ -148,8 +117,8 @@ export default function ProcessSection() {
                       '--bg-color': 'var(--bg)'
                     } as any}
                     className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-2 flex items-center justify-center font-mono font-bold text-sm md:text-lg transition-shadow duration-300 ${
-                      isActive ? "shadow-[0_0_25px_rgba(10,17,40,0.4)] dark:shadow-[0_0_25px_rgba(212,255,0,0.6)] text-white dark:text-black" : "text-neutral-500 dark:text-neutral-400 group-hover:border-neutral-400 dark:group-hover:border-neutral-500 group-hover:text-black dark:group-hover:text-white"
-                    } [--accent:#0A1128] dark:[--accent:#D4FF00] [--border:#e5e5e5] dark:[--border:#262626] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
+                      isActive ? "shadow-[0_0_25px_rgba(0,0,0,0.4)] dark:shadow-[0_0_25px_rgba(212,255,0,0.6)] text-white dark:text-black" : "text-neutral-500 dark:text-neutral-400 group-hover:border-neutral-400 dark:group-hover:border-neutral-500 group-hover:text-black dark:group-hover:text-white"
+                    } [--accent:#000000] dark:[--accent:#D4FF00] [--border:#e5e5e5] dark:[--border:#262626] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
                   >
                     {step.number}
                   </motion.div>
@@ -158,7 +127,7 @@ export default function ProcessSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activePointer"
-                      className="absolute -bottom-6 w-2 h-2 bg-[#0A1128] dark:bg-[#D4FF00] rotate-45"
+                      className="absolute -bottom-6 w-2 h-2 bg-[#000000] dark:bg-[#D4FF00] rotate-45"
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
@@ -181,7 +150,7 @@ export default function ProcessSection() {
             >
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#0A1128]/10 dark:bg-[#D4FF00]/10 border border-[#0A1128]/30 dark:border-[#D4FF00]/30 text-[#0A1128] dark:text-[#D4FF00]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#000000]/10 dark:bg-[#D4FF00]/10 border border-[#000000]/30 dark:border-[#D4FF00]/30 text-[#000000] dark:text-[#D4FF00]">
                     PHASE {processSteps[activeStep].number}
                   </span>
                   <span className="text-xs font-mono text-neutral-500 tracking-wider">
@@ -201,8 +170,8 @@ export default function ProcessSection() {
               {/* Status / Command Spec Widget */}
               <div className="border-l border-neutral-200 dark:border-neutral-800 pl-6 hidden md:block">
                 <p className="text-xs font-mono text-neutral-500 mb-1">// STATUS</p>
-                <div className="flex items-center gap-2 font-mono text-sm text-[#0A1128] dark:text-[#D4FF00]">
-                  <span className="w-2 h-2 rounded-full bg-[#0A1128] dark:bg-[#D4FF00] animate-ping" />
+                <div className="flex items-center gap-2 font-mono text-sm text-[#000000] dark:text-[#D4FF00]">
+                  <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00] animate-ping" />
                   READY_FOR_EXECUTION
                 </div>
               </div>

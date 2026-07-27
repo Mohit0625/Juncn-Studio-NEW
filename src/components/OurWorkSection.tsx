@@ -104,7 +104,7 @@ export default function OurWorkSection() {
 
           <div>
             {/* Category Tag matching Hero style */}
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#0A1128] dark:text-[#D4FF00] font-bold uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#D4FF00] font-bold uppercase tracking-widest mb-3">
               <span>[ 01 // SELECTED PORTFOLIO ]</span>
             </div>
 
@@ -182,7 +182,7 @@ export default function OurWorkSection() {
         <div className="max-w-7xl w-full mx-auto flex items-center justify-between font-mono text-xs text-zinc-500 pt-4 border-t border-zinc-200 dark:border-zinc-800/80">
           <div>[ SCROLL DOWN TO EXPLORE PROJECTS ]</div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#0A1128] dark:bg-[#D4FF00]" />
+            <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00]" />
             <span className="text-black dark:text-white font-bold">7 SELECTED BUILDS</span>
           </div>
         </div>
