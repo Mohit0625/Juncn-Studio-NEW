@@ -5,39 +5,84 @@ import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 
 const GridBackground = ({ isDark }: { isDark: boolean }) => {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const targetPos = useRef({ x: -1000, y: -1000 });
+  const currentPos = useRef({ x: -1000, y: -1000 });
+  const requestRef = useRef<number>();
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      targetPos.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        targetPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
     };
     
     const handleMouseLeave = () => {
-      setMousePos({ x: -1000, y: -1000 });
+      targetPos.current = { x: -1000, y: -1000 };
+    };
+
+    const animate = () => {
+      // If initialized
+      if (targetPos.current.x !== -1000 && currentPos.current.x === -1000) {
+        currentPos.current = { x: targetPos.current.x, y: targetPos.current.y };
+      }
+      
+      // If hidden
+      if (targetPos.current.x === -1000) {
+         currentPos.current = { x: -1000, y: -1000 };
+      }
+
+      // Lerp factor
+      const easing = 0.15;
+      const dx = targetPos.current.x - currentPos.current.x;
+      const dy = targetPos.current.y - currentPos.current.y;
+
+      currentPos.current.x += dx * easing;
+      currentPos.current.y += dy * easing;
+
+      if (glowRef.current) {
+        glowRef.current.style.WebkitMaskImage = `radial-gradient(circle 75px at ${currentPos.current.x}px ${currentPos.current.y}px, black 0%, transparent 100%)`;
+        glowRef.current.style.maskImage = `radial-gradient(circle 75px at ${currentPos.current.x}px ${currentPos.current.y}px, black 0%, transparent 100%)`;
+        glowRef.current.style.opacity = currentPos.current.x === -1000 ? "0" : "0.8";
+      }
+
+      requestRef.current = requestAnimationFrame(animate);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('touchend', handleMouseLeave);
+
+    requestRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('touchend', handleMouseLeave);
+      if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current);
+      }
     };
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-300">
       {/* Background Accent Lines (Base Grid) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50 dark:opacity-25" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-50 dark:opacity-25" />
 
       {/* Glowing Grid (Hover) */}
       <div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:4rem_4rem] transition-opacity duration-300"
-        style={{
-          WebkitMaskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-          maskImage: `radial-gradient(circle 90px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-          opacity: mousePos.x !== -1000 ? 0.8 : 0,
-        }}
+        ref={glowRef}
+        className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:2rem_2rem]"
+        style={{ opacity: 0 }}
       />
     </div>
   );
