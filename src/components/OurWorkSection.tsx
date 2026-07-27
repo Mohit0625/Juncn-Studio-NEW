@@ -179,7 +179,7 @@ export default function OurWorkSection() {
         </div>
 
         {/* --- Bottom Status Line --- */}
-        <div className="max-w-7xl w-full mx-auto flex items-center justify-between font-mono text-xs text-zinc-500 pt-4 border-t border-zinc-200 dark:border-zinc-800/80">
+        <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row sm:items-center items-start justify-between gap-4 font-mono text-xs text-zinc-500 pt-4 mt-16 border-t border-zinc-200 dark:border-zinc-800/80">
           <div>[ SCROLL DOWN TO EXPLORE PROJECTS ]</div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00]" />

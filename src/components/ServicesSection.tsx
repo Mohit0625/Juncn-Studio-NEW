@@ -50,7 +50,7 @@ export default function ServicesSection() {
   const [hoveredId, setHoveredId] = useState<string | null>('01');
 
   return (
-    <section className="relative w-full text-black dark:text-white py-24 px-6 md:px-10">
+    <section className="relative w-full text-black dark:text-white pt-24 pb-8 px-6 md:px-10">
       
       {/* Container Wrapper */}
       <div className="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -189,7 +189,15 @@ export default function ServicesSection() {
             );
           })}
         </div>
+      </div>
 
+      {/* --- Bottom Status Line --- */}
+      <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row sm:items-center items-start justify-between gap-4 font-mono text-xs text-zinc-500 pt-4 mt-16 border-t border-zinc-200 dark:border-zinc-800/80">
+        <div>[ SCROLL DOWN TO EXPLORE PROCESS ]</div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00]" />
+          <span className="text-black dark:text-white font-bold">5 CORE SERVICES</span>
+        </div>
       </div>
     </section>
   );

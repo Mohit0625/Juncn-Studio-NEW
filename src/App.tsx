@@ -3,6 +3,7 @@ import { Sun, Moon } from 'lucide-react';
 import OurWorkSection from './components/OurWorkSection';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
+import ContactSection from './components/ContactSection';
 
 const GridBackground = ({ isDark }: { isDark: boolean }) => {
   const targetPos = useRef({ x: -1000, y: -1000 });
@@ -202,6 +203,11 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
       
       {/* Process Section */}
       <ProcessSection />
+      
+      {/* Contact Section */}
+      <div id="contact">
+        <ContactSection />
+      </div>
     </div>
   );
 }

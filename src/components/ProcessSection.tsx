@@ -45,25 +45,22 @@ export default function ProcessSection() {
 
   return (
     <section 
-      className="relative w-full bg-transparent text-black dark:text-white py-24 px-6 md:px-12 font-sans overflow-hidden border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+      className="relative w-full bg-transparent text-black dark:text-white pt-8 pb-24 px-6 md:px-12 font-sans overflow-hidden transition-colors duration-300"
     >
       
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00] animate-pulse" />
-              <span className="text-xs font-mono tracking-widest text-neutral-600 dark:text-neutral-400 uppercase">
-                03 // OUR METHODOLOGY
-              </span>
+        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#D4FF00] font-bold uppercase tracking-widest">
+              <span>[ 03 // OUR METHODOLOGY ]</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] leading-[0.95]">
-              THE EXECUTABLE <span className="text-[#000000] dark:text-[#D4FF00] font-['Instrument_Serif'] italic font-normal">FLOW</span>
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] leading-[0.95]">
+              THE EXECUTABLE <br className="hidden md:block" /><span className="text-zinc-500 dark:text-zinc-100 font-['Instrument_Serif'] italic font-normal">FLOW</span>.
             </h2>
           </div>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-sm text-sm font-mono leading-relaxed">
+          <p className="text-zinc-500 dark:text-zinc-400 max-w-md text-xs sm:text-sm font-mono leading-relaxed pb-2">
             [ HOVER OVER ANY NODE TO EXECUTE PHASE INSPECTION ]
           </p>
         </div>
@@ -72,7 +69,7 @@ export default function ProcessSection() {
         <div className="relative my-16 py-8">
           
           {/* Base Connecting Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-neutral-200 dark:bg-neutral-800 -translate-y-1/2 z-0" />
+          <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-zinc-200 dark:bg-zinc-800 -translate-y-1/2 z-0" />
 
           {/* Active Filled Progress Line */}
           <motion.div 
@@ -86,8 +83,6 @@ export default function ProcessSection() {
           <div className="relative z-10 flex justify-between items-center w-full">
             {processSteps.map((step, index) => {
               const isActive = activeStep === index;
-              const isPassed = activeStep >= index;
-
               return (
                 <div
                   key={step.number}
@@ -96,7 +91,7 @@ export default function ProcessSection() {
                 >
                   {/* Step Title Label above node */}
                   <span className={`absolute -top-10 text-xs font-mono font-bold uppercase transition-all duration-300 hidden md:block whitespace-nowrap ${
-                    isActive ? "text-[#000000] dark:text-[#D4FF00] -translate-y-1" : "text-neutral-500 group-hover:text-neutral-700 dark:group-hover:text-neutral-300"
+                    isActive ? "text-[#000000] dark:text-[#D4FF00] -translate-y-1" : "text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300"
                   }`}>
                     {step.title}
                   </span>
@@ -106,7 +101,7 @@ export default function ProcessSection() {
                     whileHover={{ scale: 1.25 }}
                     animate={{
                       scale: isActive ? 1.2 : 1,
-                      borderColor: isActive || isPassed ? "var(--active-color)" : "var(--inactive-color)",
+                      borderColor: isActive ? "var(--active-color)" : "var(--inactive-color)",
                       backgroundColor: isActive ? "var(--active-color)" : "var(--bg-color)"
                     }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -117,8 +112,8 @@ export default function ProcessSection() {
                       '--bg-color': 'var(--bg)'
                     } as any}
                     className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-2 flex items-center justify-center font-mono font-bold text-sm md:text-lg transition-shadow duration-300 ${
-                      isActive ? "shadow-[0_0_25px_rgba(0,0,0,0.4)] dark:shadow-[0_0_25px_rgba(212,255,0,0.6)] text-white dark:text-black" : "text-neutral-500 dark:text-neutral-400 group-hover:border-neutral-400 dark:group-hover:border-neutral-500 group-hover:text-black dark:group-hover:text-white"
-                    } [--accent:#000000] dark:[--accent:#D4FF00] [--border:#e5e5e5] dark:[--border:#262626] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
+                      isActive ? "shadow-[0_0_25px_rgba(0,0,0,0.4)] dark:shadow-[0_0_25px_rgba(212,255,0,0.6)] text-white dark:text-black" : "text-zinc-400 dark:text-zinc-600 group-hover:border-zinc-400 dark:group-hover:border-zinc-500 group-hover:text-black dark:group-hover:text-white"
+                    } [--accent:#000000] dark:[--accent:#D4FF00] [--border:#e5e5e5] dark:[--border:#27272a] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
                   >
                     {step.number}
                   </motion.div>
@@ -138,7 +133,7 @@ export default function ProcessSection() {
         </div>
 
         {/* --- DYNAMIC DESCRIPTION STAGE --- */}
-        <div className="mt-12 bg-neutral-50/80 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 md:p-12 relative min-h-[220px] backdrop-blur-md flex flex-col justify-center">
+        <div className="mt-12 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 rounded-2xl p-8 md:p-12 relative min-h-[220px] flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
