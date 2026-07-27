@@ -112,49 +112,53 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
           <GridBackground isDark={isDark} />
         </div>
         
-        <div className="min-h-screen bg-transparent text-black dark:text-white selection:bg-[#D4FF00] selection:text-black font-sans relative z-10 flex flex-col justify-between p-6 md:p-10 transition-colors duration-300">
-          {/* --- Top Navbar --- */}
-        <header className="relative z-50 max-w-7xl w-full mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-8 h-8 bg-[#D4FF00] text-black font-black flex items-center justify-center rounded text-sm tracking-tighter">
-              J
+        {/* --- Top Navbar --- */}
+        <header className="fixed top-0 left-0 right-0 z-50 p-6 md:p-10 bg-transparent transition-colors duration-300">
+          <div className="max-w-7xl w-full mx-auto flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center gap-3 cursor-pointer">
+              <div className="w-8 h-8 bg-[#D4FF00] text-black font-black flex items-center justify-center rounded text-sm tracking-tighter">
+                J
+              </div>
+              <span className="font-black text-xl tracking-tighter uppercase text-black dark:text-white">
+                JUNCN<span className="text-zinc-500 font-normal">.STUDIO</span>
+              </span>
             </div>
-            <span className="font-black text-xl tracking-tighter uppercase text-black dark:text-white">
-              JUNCN<span className="text-zinc-500 font-normal">.STUDIO</span>
-            </span>
-          </div>
 
-          {/* Nav Pills */}
-          <nav className="hidden md:flex items-center gap-2 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/90 shadow-sm dark:shadow-none px-4 py-2 rounded-full text-xs font-mono transition-colors">
-            <a href="#work" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Work ]</a>
-            <a href="#services" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Services ]</a>
-            <a href="#process" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Process ]</a>
-            <a href="#estimator" className="px-3 py-1 text-emerald-600 dark:text-[#D4FF00] font-bold">[ Estimator ]</a>
-          </nav>
+            {/* Nav Pills */}
+            <nav className="hidden md:flex items-center gap-2 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/90 shadow-sm dark:shadow-none px-4 py-2 rounded-full text-xs font-mono transition-colors">
+              <a href="#work" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Work ]</a>
+              <a href="#services" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Services ]</a>
+              <a href="#process" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Process ]</a>
+              <a href="#estimator" className="px-3 py-1 text-emerald-600 dark:text-[#D4FF00] font-bold">[ Estimator ]</a>
+            </nav>
 
-          {/* Action Utilities */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setSoundEnabled(!soundEnabled)}
-              className="p-2.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all text-xs"
-            >
-              {soundEnabled ? '🔊' : '🔇'}
-            </button>
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className="p-2.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all text-xs"
-            >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-            <a
-              href="#contact"
-              className="bg-[#D4FF00] text-black px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider hover:scale-105 active:scale-95 transition-all flex items-center gap-1 shadow-[0_0_20px_rgba(212,255,0,0.2)]"
-            >
-              [ Let's Talk ⚡ ]
-            </a>
+            {/* Action Utilities */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setSoundEnabled(!soundEnabled)}
+                className="p-2.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all text-xs"
+              >
+                {soundEnabled ? '🔊' : '🔇'}
+              </button>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className="p-2.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all text-xs"
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+              <a
+                href="#contact"
+                className="bg-[#D4FF00] text-black px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider hover:scale-105 active:scale-95 transition-all flex items-center gap-1 shadow-[0_0_20px_rgba(212,255,0,0.2)]"
+              >
+                [ Let's Talk ⚡ ]
+              </a>
+            </div>
           </div>
         </header>
+
+        <div className="min-h-screen bg-transparent text-black dark:text-white selection:bg-[#D4FF00] selection:text-black font-sans relative z-10 flex flex-col justify-between p-6 md:p-10 pt-32 md:pt-40 transition-colors duration-300">
+
 
         {/* --- Main Hero Content --- */}
         <main 
@@ -196,13 +200,19 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
       </div>
       
       {/* Our Work Section */}
-      <OurWorkSection />
+      <div id="work">
+        <OurWorkSection />
+      </div>
       
       {/* Services Section */}
-      <ServicesSection />
+      <div id="services">
+        <ServicesSection />
+      </div>
       
       {/* Process Section */}
-      <ProcessSection />
+      <div id="process">
+        <ProcessSection />
+      </div>
       
       {/* Contact Section */}
       <div id="contact">
