@@ -59,7 +59,7 @@ export default function ServicesSection() {
         <div className="lg:col-span-5 lg:sticky lg:top-12 space-y-8 z-10">
           
           {/* Section Tag */}
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#D4FF00] font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#FDB913] font-bold uppercase tracking-widest">
             <span>[ 02 // WHAT WE DO ]</span>
           </div>
 
@@ -77,7 +77,7 @@ export default function ServicesSection() {
           <div className="pt-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 bg-[#000000] dark:bg-[#D4FF00] text-white dark:text-black px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-transparent dark:border-black hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
+              className="inline-flex items-center gap-3 bg-[#000000] dark:bg-[#FDB913] text-white dark:text-black px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-transparent dark:border-black hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
             >
               <span>[ NEED A CUSTOM SCOPE? ]</span>
               <span className="font-mono">↗</span>
@@ -103,7 +103,7 @@ export default function ServicesSection() {
                 onMouseLeave={() => setHoveredId(null)}
                 className={`relative rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer ${
                   isHovered
-                    ? 'bg-white dark:bg-zinc-900/90 border-[#000000] dark:border-[#D4FF00] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.15)] dark:shadow-[8px_8px_0px_0px_rgba(212,255,0,0.15)]'
+                    ? 'bg-white dark:bg-zinc-900/90 border-[#000000] dark:border-[#FDB913] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.15)] dark:shadow-[8px_8px_0px_0px_rgba(253,185,19,0.15)]'
                     : 'bg-zinc-50 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700'
                 }`}
               >
@@ -114,7 +114,7 @@ export default function ServicesSection() {
                     <span
                       className={`font-mono text-xs font-bold px-2.5 py-1 rounded transition-colors ${
                         isHovered
-                          ? 'bg-[#000000] dark:bg-[#D4FF00] text-white dark:text-black'
+                          ? 'bg-[#000000] dark:bg-[#FDB913] text-white dark:text-black'
                           : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400'
                       }`}
                     >
@@ -124,7 +124,7 @@ export default function ServicesSection() {
                     {/* Title */}
                     <h3
                       className={`text-xl sm:text-2xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] transition-colors ${
-                        isHovered ? 'text-[#000000] dark:text-[#D4FF00]' : 'text-black dark:text-white'
+                        isHovered ? 'text-[#000000] dark:text-[#FDB913]' : 'text-black dark:text-white'
                       }`}
                     >
                       {service.title}
@@ -135,7 +135,7 @@ export default function ServicesSection() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs border transition-all ${
                       isHovered
-                        ? 'bg-[#000000] dark:bg-[#D4FF00] text-white dark:text-black border-[#000000] dark:border-[#D4FF00] rotate-45'
+                        ? 'bg-[#000000] dark:bg-[#FDB913] text-white dark:text-black border-[#000000] dark:border-[#FDB913] rotate-45'
                         : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700'
                     }`}
                   >
@@ -156,7 +156,7 @@ export default function ServicesSection() {
                       <div className="px-6 pb-6 pt-2 border-t border-zinc-200 dark:border-zinc-800/80 space-y-6">
                         {/* Subtitle & Description */}
                         <div>
-                          <span className="text-[10px] font-mono text-[#000000] dark:text-[#D4FF00] uppercase tracking-wider block mb-1">
+                          <span className="text-[10px] font-mono text-[#000000] dark:text-[#FDB913] uppercase tracking-wider block mb-1">
                             {service.subtitle}
                           </span>
                           <p className="text-zinc-600 dark:text-zinc-300 font-mono text-xs sm:text-sm leading-relaxed max-w-xl">
@@ -175,7 +175,7 @@ export default function ServicesSection() {
                                 key={idx}
                                 className="flex items-center gap-2 text-xs font-mono text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 px-3 py-2 rounded-lg"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#000000] dark:bg-[#D4FF00]" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#000000] dark:bg-[#FDB913]" />
                                 <span>{item}</span>
                               </div>
                             ))}
@@ -195,7 +195,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row sm:items-center items-start justify-between gap-4 font-mono text-xs text-zinc-500 pt-4 mt-16 border-t border-zinc-200 dark:border-zinc-800/80">
         <div>[ SCROLL DOWN TO EXPLORE PROCESS ]</div>
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00]" />
+          <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#FDB913]" />
           <span className="text-black dark:text-white font-bold">5 CORE SERVICES</span>
         </div>
       </div>

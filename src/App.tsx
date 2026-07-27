@@ -3,7 +3,9 @@ import { Sun, Moon } from 'lucide-react';
 import OurWorkSection from './components/OurWorkSection';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
+import EstimatorSection from './components/EstimatorSection';
 import ContactSection from './components/ContactSection';
+import Logo from './components/Logo';
 
 const GridBackground = ({ isDark }: { isDark: boolean }) => {
   const targetPos = useRef({ x: -1000, y: -1000 });
@@ -82,7 +84,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
       {/* Glowing Grid (Hover) */}
       <div 
         ref={glowRef}
-        className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#D4FF00_1px,transparent_1px),linear-gradient(to_bottom,#D4FF00_1px,transparent_1px)] bg-[size:2rem_2rem]"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#FDB913_1px,transparent_1px),linear-gradient(to_bottom,#FDB913_1px,transparent_1px)] bg-[size:2rem_2rem]"
         style={{ opacity: 0 }}
       />
     </div>
@@ -117,12 +119,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
           <div className="max-w-7xl w-full mx-auto flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-3 cursor-pointer">
-              <div className="w-8 h-8 bg-[#D4FF00] text-black font-black flex items-center justify-center rounded text-sm tracking-tighter">
-                J
-              </div>
-              <span className="font-black text-xl tracking-tighter uppercase text-black dark:text-white">
-                JUNCN<span className="text-zinc-500 font-normal">.STUDIO</span>
-              </span>
+              <Logo className="h-6 w-auto" />
             </div>
 
             {/* Nav Pills */}
@@ -130,7 +127,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
               <a href="#work" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Work ]</a>
               <a href="#services" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Services ]</a>
               <a href="#process" className="px-3 py-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">[ Process ]</a>
-              <a href="#estimator" className="px-3 py-1 text-emerald-600 dark:text-[#D4FF00] font-bold">[ Estimator ]</a>
+              <a href="#estimator" className="px-3 py-1 text-emerald-600 dark:text-[#FDB913] font-bold">[ Estimator ]</a>
             </nav>
 
             {/* Action Utilities */}
@@ -149,7 +146,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
               </button>
               <a
                 href="#contact"
-                className="bg-[#D4FF00] text-black px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider hover:scale-105 active:scale-95 transition-all flex items-center gap-1 shadow-[0_0_20px_rgba(212,255,0,0.2)]"
+                className="bg-[#D4FF00] dark:bg-[#FDB913] text-black px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider hover:scale-105 active:scale-95 transition-all flex items-center gap-1 shadow-[0_0_20px_rgba(212,255,0,0.2)] dark:shadow-[0_0_20px_rgba(253,185,19,0.2)]"
               >
                 [ Let's Talk ⚡ ]
               </a>
@@ -157,7 +154,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
           </div>
         </header>
 
-        <div className="min-h-screen bg-transparent text-black dark:text-white selection:bg-[#D4FF00] selection:text-black font-sans relative z-10 flex flex-col justify-between p-6 md:p-10 pt-32 md:pt-40 transition-colors duration-300">
+        <div className="min-h-screen bg-transparent text-black dark:text-white selection:bg-[#D4FF00] dark:selection:bg-[#FDB913] selection:text-black font-sans relative z-10 flex flex-col justify-between p-6 md:p-10 pt-32 md:pt-40 transition-colors duration-300">
 
 
         {/* --- Main Hero Content --- */}
@@ -182,7 +179,7 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
         {/* --- Bottom CTAs & Proof Bar --- */}
         <footer className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-zinc-200 dark:border-zinc-800/80 transition-colors">
           <div className="flex items-center gap-4 w-full sm:w-auto">
-            <button className="flex-1 sm:flex-none bg-emerald-400 dark:bg-[#D4FF00] text-black px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
+            <button className="flex-1 sm:flex-none bg-emerald-400 dark:bg-[#FDB913] text-black px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
               [ VIEW SELECTED WORK ↗ ]
             </button>
 
@@ -212,6 +209,11 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
       {/* Process Section */}
       <div id="process">
         <ProcessSection />
+      </div>
+      
+      {/* Estimator Section */}
+      <div id="estimator">
+        <EstimatorSection />
       </div>
       
       {/* Contact Section */}

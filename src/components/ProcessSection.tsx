@@ -53,7 +53,7 @@ export default function ProcessSection() {
         {/* Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#D4FF00] font-bold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#FDB913] font-bold uppercase tracking-widest">
               <span>[ 03 // OUR METHODOLOGY ]</span>
             </div>
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] leading-[0.95]">
@@ -73,7 +73,7 @@ export default function ProcessSection() {
 
           {/* Active Filled Progress Line */}
           <motion.div 
-            className="absolute top-1/2 left-0 h-[2px] bg-[#000000] dark:bg-[#D4FF00] -translate-y-1/2 z-0 shadow-[0_0_12px_rgba(0,0,0,0.5)] dark:shadow-[0_0_12px_#D4FF00]"
+            className="absolute top-1/2 left-0 h-[2px] bg-[#000000] dark:bg-[#FDB913] -translate-y-1/2 z-0 shadow-[0_0_12px_rgba(0,0,0,0.5)] dark:shadow-[0_0_12px_#FDB913]"
             initial={{ width: "0%" }}
             animate={{ width: `${(activeStep / (processSteps.length - 1)) * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -91,7 +91,7 @@ export default function ProcessSection() {
                 >
                   {/* Step Title Label above node */}
                   <span className={`absolute -top-10 text-xs font-mono font-bold uppercase transition-all duration-300 hidden md:block whitespace-nowrap ${
-                    isActive ? "text-[#000000] dark:text-[#D4FF00] -translate-y-1" : "text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300"
+                    isActive ? "text-[#000000] dark:text-[#FDB913] -translate-y-1" : "text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300"
                   }`}>
                     {step.title}
                   </span>
@@ -112,8 +112,8 @@ export default function ProcessSection() {
                       '--bg-color': 'var(--bg)'
                     } as any}
                     className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-2 flex items-center justify-center font-mono font-bold text-sm md:text-lg transition-shadow duration-300 ${
-                      isActive ? "shadow-[0_0_25px_rgba(0,0,0,0.4)] dark:shadow-[0_0_25px_rgba(212,255,0,0.6)] text-white dark:text-black" : "text-zinc-400 dark:text-zinc-600 group-hover:border-zinc-400 dark:group-hover:border-zinc-500 group-hover:text-black dark:group-hover:text-white"
-                    } [--accent:#000000] dark:[--accent:#D4FF00] [--border:#e5e5e5] dark:[--border:#27272a] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
+                      isActive ? "shadow-[0_0_25px_rgba(0,0,0,0.4)] dark:shadow-[0_0_25px_rgba(253,185,19,0.6)] text-white dark:text-black" : "text-zinc-400 dark:text-zinc-600 group-hover:border-zinc-400 dark:group-hover:border-zinc-500 group-hover:text-black dark:group-hover:text-white"
+                    } [--accent:#000000] dark:[--accent:#FDB913] [--border:#e5e5e5] dark:[--border:#27272a] [--bg:#ffffff] dark:[--bg:#0a0a0a]`}
                   >
                     {step.number}
                   </motion.div>
@@ -122,7 +122,7 @@ export default function ProcessSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activePointer"
-                      className="absolute -bottom-6 w-2 h-2 bg-[#000000] dark:bg-[#D4FF00] rotate-45"
+                      className="absolute -bottom-6 w-2 h-2 bg-[#000000] dark:bg-[#FDB913] rotate-45"
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
@@ -145,7 +145,7 @@ export default function ProcessSection() {
             >
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#000000]/10 dark:bg-[#D4FF00]/10 border border-[#000000]/30 dark:border-[#D4FF00]/30 text-[#000000] dark:text-[#D4FF00]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#000000]/10 dark:bg-[#FDB913]/10 border border-[#000000]/30 dark:border-[#FDB913]/30 text-[#000000] dark:text-[#FDB913]">
                     PHASE {processSteps[activeStep].number}
                   </span>
                   <span className="text-xs font-mono text-neutral-500 tracking-wider">
@@ -165,8 +165,8 @@ export default function ProcessSection() {
               {/* Status / Command Spec Widget */}
               <div className="border-l border-neutral-200 dark:border-neutral-800 pl-6 hidden md:block">
                 <p className="text-xs font-mono text-neutral-500 mb-1">// STATUS</p>
-                <div className="flex items-center gap-2 font-mono text-sm text-[#000000] dark:text-[#D4FF00]">
-                  <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#D4FF00] animate-ping" />
+                <div className="flex items-center gap-2 font-mono text-sm text-[#000000] dark:text-[#FDB913]">
+                  <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#FDB913] animate-ping" />
                   READY_FOR_EXECUTION
                 </div>
               </div>

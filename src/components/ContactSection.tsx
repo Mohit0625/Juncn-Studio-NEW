@@ -27,8 +27,8 @@ export default function ContactSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200 dark:border-zinc-800/80">
           <div>
             {/* Section Tag (Section 04 / 5th Section) */}
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#D4FF00] font-bold uppercase tracking-widest mb-3">
-              <span>[ 04 // INITIATE TRANSMISSION ]</span>
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#FDB913] font-bold uppercase tracking-widest mb-3">
+              <span>[ 05 // INITIATE TRANSMISSION ]</span>
             </div>
 
             {/* Typography matching Hero & Services styling */}
@@ -56,7 +56,7 @@ export default function ContactSection() {
                 placeholder="YOUR NAME"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="inline-block bg-transparent border-b-2 border-zinc-900 dark:border-[#D4FF00] text-zinc-900 dark:text-[#D4FF00] placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-500 dark:focus:border-white px-2 py-1 font-mono text-xl sm:text-3xl md:text-4xl uppercase w-[220px] sm:w-[320px] transition-colors"
+                className="inline-block bg-transparent border-b-2 border-zinc-900 dark:border-[#FDB913] text-zinc-900 dark:text-[#FDB913] placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-500 dark:focus:border-white px-2 py-1 font-mono text-xl sm:text-3xl md:text-4xl uppercase w-[220px] sm:w-[320px] transition-colors"
               />
 
               <span> AND MY EMAIL IS </span>
@@ -66,7 +66,7 @@ export default function ContactSection() {
                 placeholder="YOUR EMAIL"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="inline-block bg-transparent border-b-2 border-zinc-900 dark:border-[#D4FF00] text-zinc-900 dark:text-[#D4FF00] placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-500 dark:focus:border-white px-2 py-1 font-mono text-xl sm:text-3xl md:text-4xl normal-case w-[260px] sm:w-[380px] transition-colors"
+                className="inline-block bg-transparent border-b-2 border-zinc-900 dark:border-[#FDB913] text-zinc-900 dark:text-[#FDB913] placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-500 dark:focus:border-white px-2 py-1 font-mono text-xl sm:text-3xl md:text-4xl normal-case w-[260px] sm:w-[380px] transition-colors"
               />
 
               <span>. I AM LOOKING TO BUILD </span>
@@ -74,7 +74,7 @@ export default function ContactSection() {
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="appearance-none bg-zinc-100/90 dark:bg-zinc-900/90 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-[#D4FF00] font-mono text-base sm:text-2xl md:text-3xl uppercase px-4 py-2 rounded-xl focus:outline-none focus:border-zinc-900 dark:focus:border-[#D4FF00] cursor-pointer pr-10 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 transition-all"
+                  className="appearance-none bg-zinc-100/90 dark:bg-zinc-900/90 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-[#FDB913] font-mono text-base sm:text-2xl md:text-3xl uppercase px-4 py-2 rounded-xl focus:outline-none focus:border-zinc-900 dark:focus:border-[#FDB913] cursor-pointer pr-10 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 transition-all"
                 >
                   <option value="WEB DEVELOPMENT">A CUSTOM WEBSITE</option>
                   <option value="3D & WEBGL">A 3D / WEBGL EXPERIENCE</option>
@@ -82,7 +82,7 @@ export default function ContactSection() {
                   <option value="E-COMMERCE">AN E-COMMERCE STORE</option>
                   <option value="BRANDING">A BRAND IDENTITY</option>
                 </select>
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-900 dark:text-[#D4FF00] font-mono text-xs pointer-events-none">
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-900 dark:text-[#FDB913] font-mono text-xs pointer-events-none">
                   ▼ 
                 </span>
               </div>
@@ -100,20 +100,20 @@ export default function ContactSection() {
                 placeholder="Briefly describe your goals, timeline, or links to existing specs..."
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                className="w-full bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-800 rounded-xl p-4 text-xs sm:text-sm font-mono text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-[#D4FF00] transition-colors resize-none"
+                className="w-full bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-800 rounded-xl p-4 text-xs sm:text-sm font-mono text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 dark:placeholder-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-[#FDB913] transition-colors resize-none"
               />
             </div>
 
             {/* Bottom Submit Action */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-zinc-200 dark:border-zinc-800/80">
               <div className="flex items-center gap-2 font-mono text-xs text-zinc-500">
-                <span className="w-2 h-2 rounded-full bg-zinc-900 dark:bg-[#D4FF00]" />
+                <span className="w-2 h-2 rounded-full bg-zinc-900 dark:bg-[#FDB913]" />
                 <span>[ AVERAGE RESPONSE TIME: &lt; 24 HOURS ]</span>
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-zinc-900 dark:bg-[#D4FF00] text-white dark:text-black px-8 py-4 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-zinc-900 dark:border-black hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-sm active:translate-x-[2px] active:translate-y-[2px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-zinc-900 dark:bg-[#FDB913] text-white dark:text-black px-8 py-4 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-zinc-900 dark:border-black hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-sm active:translate-x-[2px] active:translate-y-[2px]"
               >
                 <span>[ TRANSMIT BRIEF ]</span>
                 <span className="font-mono text-sm">↗</span>
@@ -126,16 +126,16 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-8 sm:p-12 rounded-2xl border border-zinc-900 dark:border-[#D4FF00] bg-zinc-100/60 dark:bg-zinc-900/60 backdrop-blur-md space-y-6 text-center max-w-2xl mx-auto"
+            className="p-8 sm:p-12 rounded-2xl border border-zinc-900 dark:border-[#FDB913] bg-zinc-100/60 dark:bg-zinc-900/60 backdrop-blur-md space-y-6 text-center max-w-2xl mx-auto"
           >
-            <div className="w-12 h-12 rounded-full bg-zinc-900 dark:bg-[#D4FF00] text-white dark:text-black flex items-center justify-center font-mono font-bold text-xl mx-auto">
+            <div className="w-12 h-12 rounded-full bg-zinc-900 dark:bg-[#FDB913] text-white dark:text-black flex items-center justify-center font-mono font-bold text-xl mx-auto">
               ✓
             </div>
             <h3 className="text-3xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] text-zinc-900 dark:text-white">
-              TRANSMISSION <span className="text-zinc-500 dark:text-[#D4FF00]">RECEIVED</span>.
+              TRANSMISSION <span className="text-zinc-500 dark:text-[#FDB913]">RECEIVED</span>.
             </h3>
             <p className="text-zinc-600 dark:text-zinc-300 font-mono text-xs sm:text-sm leading-relaxed">
-              Thank you, <span className="text-zinc-900 dark:text-[#D4FF00]">{formData.name}</span>. We have logged your request for <span className="text-zinc-900 dark:text-white">{formData.service}</span> and will reach out to <span className="text-zinc-900 dark:text-[#D4FF00]">{formData.email}</span> within 24 hours.
+              Thank you, <span className="text-zinc-900 dark:text-[#FDB913]">{formData.name}</span>. We have logged your request for <span className="text-zinc-900 dark:text-white">{formData.service}</span> and will reach out to <span className="text-zinc-900 dark:text-[#FDB913]">{formData.email}</span> within 24 hours.
             </p>
             <button
               onClick={() => setSubmitted(false)}
