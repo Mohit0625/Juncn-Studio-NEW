@@ -104,7 +104,7 @@ export default function OurWorkSection() {
 
           <div>
             {/* Category Tag matching Hero style */}
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#FDB913] font-bold uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-zinc-900 dark:text-[#FDB913] font-bold uppercase tracking-widest mb-3">
               <span>[ 01 // SELECTED PORTFOLIO ]</span>
             </div>
 
@@ -125,7 +125,7 @@ export default function OurWorkSection() {
             {PROJECTS.map((project) => (
               <div
                 key={project.id}
-                className="group relative h-[420px] w-[320px] sm:w-[440px] flex-shrink-0 bg-zinc-900/90 border border-zinc-800 rounded-2xl overflow-hidden p-6 flex flex-col justify-between hover:border-[#D4FF00] dark:hover:border-[#FDB913] transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)]"
+                className="group relative h-[420px] w-[320px] sm:w-[440px] flex-shrink-0 bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden p-6 flex flex-col justify-between hover:border-black dark:hover:border-[#FDB913] transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)]"
               >
                 {/* Background Visual Thumbnail */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -139,29 +139,29 @@ export default function OurWorkSection() {
 
                 {/* Card Top Information */}
                 <div className="relative z-10 flex justify-between items-center font-mono text-xs">
-                  <span className="bg-[#D4FF00] dark:bg-[#FDB913] text-black px-2.5 py-1 rounded font-bold">
+                  <span className="bg-zinc-900 dark:bg-[#FDB913] text-white dark:text-black px-2.5 py-1 rounded font-bold">
                     [{project.id}]
                   </span>
-                  <span className="text-zinc-400 font-bold">{project.year}</span>
+                  <span className="text-zinc-500 font-bold">{project.year}</span>
                 </div>
 
                 {/* Card Bottom Content */}
                 <div className="relative z-10 space-y-4">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-[#D4FF00] dark:text-[#FDB913] tracking-wider">
+                    <span className="text-[10px] font-mono uppercase text-[#FDB913] tracking-wider">
                       {project.category}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] text-white group-hover:text-[#D4FF00] dark:group-hover:text-[#FDB913] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight font-['Cabinet_Grotesk'] text-black dark:text-white group-hover:text-[#FDB913] transition-colors">
                       {project.title}
                     </h3>
                   </div>
 
                   {/* Micro Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-zinc-800/80">
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800/80">
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] font-mono bg-zinc-950/80 border border-zinc-800 px-2 py-1 rounded text-zinc-300"
+                        className="text-[10px] font-mono bg-zinc-100 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 px-2 py-1 rounded text-zinc-600 dark:text-zinc-300"
                       >
                         #{tag}
                       </span>
@@ -170,7 +170,7 @@ export default function OurWorkSection() {
                 </div>
 
                 {/* Corner Hover Arrow Indicator */}
-                <div className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-black/60 border border-zinc-700 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-[#D4FF00] dark:group-hover:bg-[#FDB913] group-hover:text-black group-hover:border-[#D4FF00] dark:group-hover:border-[#FDB913] transition-all duration-300 font-mono">
+                <div className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-black dark:text-white opacity-0 group-hover:opacity-100 group-hover:bg-zinc-900 dark:group-hover:bg-[#FDB913] group-hover:text-white dark:group-hover:text-black group-hover:border-zinc-900 dark:group-hover:border-[#FDB913] transition-all duration-300 font-mono">
                   ↗
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function OurWorkSection() {
         <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row sm:items-center items-start justify-between gap-4 font-mono text-xs text-zinc-500 pt-4 mt-16 border-t border-zinc-200 dark:border-zinc-800/80">
           <div>[ SCROLL DOWN TO EXPLORE PROJECTS ]</div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#000000] dark:bg-[#FDB913]" />
+            <span className="w-2 h-2 rounded-full bg-zinc-900 dark:bg-[#FDB913]" />
             <span className="text-black dark:text-white font-bold">7 SELECTED BUILDS</span>
           </div>
         </div>

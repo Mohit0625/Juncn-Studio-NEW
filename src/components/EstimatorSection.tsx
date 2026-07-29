@@ -89,7 +89,7 @@ export default function EstimatorSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200 dark:border-zinc-800/80">
           <div>
             {/* Section Tag (Section 04 / 4th Section) */}
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#000000] dark:text-[#FDB913] font-bold uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-zinc-900 dark:text-[#FDB913] font-bold uppercase tracking-widest mb-3">
               <span>[ 04 // ESTIMATE YOUR SCOPE ]</span>
             </div>
 

@@ -5,4 +5,4 @@
   --font-sans: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-}
+}::selection { background-color: #FDB913; color: #000; }
