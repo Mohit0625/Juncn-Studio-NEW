@@ -45,7 +45,7 @@ export default function FooterSection() {
                     href={`#${item.toLowerCase()}`}
                     className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-[#FDB913] transition-colors uppercase tracking-wider flex items-center gap-2 group"
                   >
-                    <span className="text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-900 dark:group-hover:text-[#FDB913] transition-colors">0{idx} //</span>
+                    <span className="text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-900 dark:group-hover:text-[#FDB913] transition-colors">0{idx+1} //</span>
                     <span>{item}</span>
                   </a>
                 </li>

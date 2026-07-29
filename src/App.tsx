@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { TrustMetricsBar } from './components/TrustMetricsBar';
 import OurWorkSection from './components/OurWorkSection';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
@@ -203,6 +204,8 @@ const GridBackground = ({ isDark }: { isDark: boolean }) => {
         </div>
 
       </div>
+      
+      <TrustMetricsBar />
       
       {/* Our Work Section */}
       <div id="work">

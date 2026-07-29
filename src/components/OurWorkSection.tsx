@@ -1,63 +1,79 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-// Sample Data for 7 Projects
+// Sample Data for 8 Projects
 const PROJECTS = [
   {
     id: '01',
-    title: 'AURA MOBILITY',
-    category: 'E-COMMERCE / 3D WEBGL',
-    year: '2025',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Webflow', 'Three.js', 'UI/UX']
+    title: 'INKEVERSE',
+    category: 'TATTOO STUDIO',
+    year: '2024',
+    image: 'https://api.microlink.io/?url=https://inkverse-tattoo.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Creative', 'Portfolio', 'UI/UX'],
+    link: 'https://inkverse-tattoo.vercel.app/'
   },
   {
     id: '02',
-    title: 'NEXUS ARCHIVE',
-    category: 'FINTECH / DASHBOARD',
-    year: '2025',
-    image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop',
-    tags: ['React', 'Tailwind', 'Design System']
+    title: 'HARBORESTONE',
+    category: 'REAL ESTATE',
+    year: '2024',
+    image: 'https://api.microlink.io/?url=https://harborstone-real-estate.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Property', 'Listing', 'Next.js'],
+    link: 'https://harborstone-real-estate.vercel.app/'
   },
   {
     id: '03',
-    title: 'KINETIC SOUND',
-    category: 'AUDIO EXPERIENCE',
+    title: 'ARTICFLOW',
+    category: 'HVAC SERVICES',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Web Audio API', 'Creative Dev']
+    image: 'https://api.microlink.io/?url=https://artic-flow-hvac.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Business', 'Corporate', 'Webflow'],
+    link: 'https://artic-flow-hvac.vercel.app/'
   },
   {
     id: '04',
-    title: 'PULSE BIO',
-    category: 'HEALTH TECH / BRANDING',
+    title: 'DR. SARAH AHMED',
+    category: 'DOCTOR PORTFOLIO',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Brand Identity', 'Next.js']
+    image: 'https://api.microlink.io/?url=https://doctor-demo-sigma.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Medical', 'Personal', 'React'],
+    link: 'https://doctor-demo-sigma.vercel.app/'
   },
   {
     id: '05',
-    title: 'SOLARIS LABS',
-    category: 'AI PLATFORM',
+    title: 'LENS & LIGHT',
+    category: 'PHOTOGRAPHY PORTFOLIO',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1000&auto=format&fit=crop',
-    tags: ['SaaS', 'Figma Systems']
+    image: 'https://api.microlink.io/?url=https://lens-photo.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Gallery', 'Visuals', 'Design'],
+    link: 'https://lens-photo.vercel.app/'
   },
   {
     id: '06',
-    title: 'VOLT ENERGY',
-    category: 'SUSTAINABILITY / WEB',
+    title: 'AURA FLOW',
+    category: 'SAMPLE PRODUCT',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
-    tags: ['GSAP', 'Headless CMS']
+    image: 'https://api.microlink.io/?url=https://auraflow-product.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['E-Commerce', '3D', 'WebGL'],
+    link: 'https://auraflow-product.vercel.app/'
   },
   {
     id: '07',
-    title: 'HYPER SPATIAL',
-    category: 'METAVERSE / EXPERIMENTAL',
+    title: 'MACHINERY CENTRE',
+    category: 'B2B MACHINERY',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Shaders', 'WebGL', '3D']
+    image: 'https://api.microlink.io/?url=https://www.machinerycentre.in/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['B2B', 'Enterprise', 'Catalogue'],
+    link: 'https://www.machinerycentre.in/'
+  },
+  {
+    id: '08',
+    title: 'ORRO DIGITAL',
+    category: 'WEB AGENCY',
+    year: '2024',
+    image: 'https://api.microlink.io/?url=https://orrodigital.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    tags: ['Agency', 'Creative', 'React'],
+    link: 'https://orrodigital.vercel.app/'
   }
 ];
 
@@ -123,8 +139,11 @@ export default function OurWorkSection() {
         <div className="relative flex-1 flex items-center my-auto">
           <motion.div ref={trackRef} style={{ x }} className="flex w-max gap-8 pl-4 pr-24">
             {PROJECTS.map((project) => (
-              <div
+              <a
                 key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative h-[420px] w-[320px] sm:w-[440px] flex-shrink-0 bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden p-6 flex flex-col justify-between hover:border-black dark:hover:border-[#FDB913] transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)]"
               >
                 {/* Background Visual Thumbnail */}
@@ -173,7 +192,7 @@ export default function OurWorkSection() {
                 <div className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-black dark:text-white opacity-0 group-hover:opacity-100 group-hover:bg-zinc-900 dark:group-hover:bg-[#FDB913] group-hover:text-white dark:group-hover:text-black group-hover:border-zinc-900 dark:group-hover:border-[#FDB913] transition-all duration-300 font-mono">
                   ↗
                 </div>
-              </div>
+              </a>
             ))}
           </motion.div>
         </div>
@@ -183,7 +202,7 @@ export default function OurWorkSection() {
           <div>[ SCROLL DOWN TO EXPLORE PROJECTS ]</div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-zinc-900 dark:bg-[#FDB913]" />
-            <span className="text-black dark:text-white font-bold">7 SELECTED BUILDS</span>
+            <span className="text-black dark:text-white font-bold">8 SELECTED BUILDS</span>
           </div>
         </div>
 
