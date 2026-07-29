@@ -84,9 +84,9 @@ export default function FooterSection() {
         </div>
 
         {/* --- GIANT WATERMARK TEXT --- */}
-        <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800/50 overflow-hidden">
-          <h1 className="text-[14vw] font-black uppercase tracking-tighter leading-none text-zinc-100 dark:text-zinc-900/60 hover:text-zinc-200 dark:hover:text-zinc-800 transition-colors select-none font-['Cabinet_Grotesk'] text-center">
-            JUNCN<span className="font-['Instrument_Serif'] italic font-normal text-zinc-200 dark:text-zinc-800">.STUDIO</span>
+        <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800/50 overflow-hidden flex justify-center items-center w-full">
+          <h1 className="text-[11vw] sm:text-[9.5vw] md:text-[8.5vw] lg:text-[7.5vw] font-black uppercase tracking-tighter leading-none text-zinc-200 dark:text-zinc-800 transition-colors select-none font-['Cabinet_Grotesk'] text-center whitespace-nowrap w-full">
+            JUNCN<span className="font-['Instrument_Serif'] italic font-normal text-zinc-300 dark:text-zinc-700">.STUDIO</span>
           </h1>
         </div>
 
